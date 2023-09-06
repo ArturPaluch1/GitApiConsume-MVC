@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Git consume</title>
+</head>
+<body>
+<form th:action="@{/getUserRepository}" method="post">
+    <label>Username:</label>
+    <input type="text" name="gitHubUser"/>
+
+    <button type="submit">Submit</button>
+
+
+    <label th:text="xml"></label>
+    <input type="radio" name="Accept" value="xml"/>
+
+    <label th:text="json"></label>
+    <input type="radio" name="Accept" value="json" checked/>
+
+    </block>
+
+</form>
+
+
+</body>
+</html>

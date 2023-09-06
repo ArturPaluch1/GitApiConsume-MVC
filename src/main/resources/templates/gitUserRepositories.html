@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Git consume</title>
+
+    <style>
+        tr:nth-child(odd) { background-color:#EEE; }
+        tr:nth-child(even) { background-color:gray; }
+
+    </style>
+</head>
+<body>
+
+<form th:action="@{/}">
+
+    <button type="submit"> Different user</button>
+
+
+</form>
+
+<br>
+<table border="2">
+    <thead>
+    <tr>
+        <th width="200" align="center" bgcolor="#ffe4c4">Owner</th>
+        <th width="200" align="center" bgcolor="#ffe4c4">RepositoryName</th>
+        <th width="400" align="center" bgcolor="#ffe4c4">Branches and commit Sha</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="repo,iter: ${repos}" align="left">
+        <td th:text="${repo.getOwnerLogin()}" width="200" align="left"></td>
+        <td th:text="${repo.getRepositoryName()}" width="200" align="left"/>
+
+        <td width="400" align="left">
+
+            <table>
+                <tbody>
+                <tr th:each="branch:${repos.get(iter.index).getBranches()}">
+                    <td th:text="${branch.getBranchName()}" width="200" align="left"/>
+                    <td th:text="${branch.getLastCommitSha()}" width="200" align="left"/>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+
+
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
