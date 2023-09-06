@@ -29,7 +29,7 @@ public class GitConsumeController {
     }
 
 
-    @PostMapping("/getUserRepository")
+    @GetMapping("/getUserRepository")
     public Object getUserRepository(@RequestParam(value = "gitHubUser", required = false) String gitHubUser, @RequestParam(value = "Accept", required = false) String accept, Model model) {
 
 
