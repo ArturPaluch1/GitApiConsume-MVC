@@ -37,7 +37,7 @@ public class GitHubRepositoryServiceImpl implements GitHubRepositoryService {
         ResponseEntity<Object> response = null;
 
 
-        if (acceptHeader.equals("application/xml")) {
+        if (acceptHeader.equals("xml")) {
 
             throw new ResponseStatusException(NOT_ACCEPTABLE, "XML is not acceptable");
         } else {
@@ -46,7 +46,7 @@ public class GitHubRepositoryServiceImpl implements GitHubRepositoryService {
                 HttpHeaders headers = new HttpHeaders();
 
                 headers.add("Accept", "application/" + acceptHeader);
-
+                headers.set("Authorization", "token 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");
                 HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
                 response = restTemplate.exchange(url, HttpMethod.GET, entity, Object.class);
 
@@ -64,7 +64,7 @@ public class GitHubRepositoryServiceImpl implements GitHubRepositoryService {
                     String urlBranches = "https://api.github.com/repos/" + item.get("full_name") + "/branches";
 
                     HttpHeaders headers1 = new HttpHeaders();
-
+                    headers1.set("Authorization", "token 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");
                     headers1.add("Accept", "application/" + acceptHeader);
                     HttpEntity<String> entity1 = new HttpEntity<String>("parameters", headers1);
                     ResponseEntity<Object> response1 = restTemplate.exchange(urlBranches, HttpMethod.GET, entity1, Object.class);
